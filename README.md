@@ -6,11 +6,107 @@ A little program to help calculate the cost of a road trip. Intended for a road 
 * Chooses the most cost-efficient rental vehicles from a given options
 * Calculates number of cars needed and number of lodging rooms needed based on passengers
 * Provides output in an easy-to-understand format through pandas
+* Includes an AWS Lambda handler for a simple JSON API
+* Easy to deploy to AWS Lambda with SAM
 
 ## Usage
-There is no user interface, so the source must be edited directly. Relevant files are ```__main__.py``` and ```simulate.py```. Everything else should (probably) be untouched.
+There is no user interface, so the source must be edited directly. The relevant file is ```__init__.py```. Everything else should (probably) be untouched.
 
-## Example Output
+Alternatively you can deploy this to AWS Lambda and make requests against it.
+
+### Example Lambda Request
+```bash
+{
+  "vehicles": [
+    {
+      "name": "Rental Van",
+      "capacity": 7,
+      "cost_per_day": 100,
+      "miles_per_gallon": 20
+    },
+    {
+      "name": "Rental Sedan",
+      "capacity": 5,
+      "cost_per_day": 100,
+      "miles_per_gallon": 40
+    }
+  ],
+  "distance": 3061,
+  "average_cost_per_gallon_of_gas": 2.25,
+  "average_cost_per_night_at_hotel": 150,
+  "max_people_per_room": 5,
+  "average_cost_of_food_per_day_per_person": 7,
+  "return_flight_cost": 124,
+  "people": {
+    "min": 2,
+    "max": 3
+  },
+  "days": {
+    "min": 5,
+    "max": 6
+  }
+}
+```
+
+### Example Lambda Response
+```bash
+[
+  {
+    "number of people": 2,
+    "number of days": 5,
+    "gas cost": 172.18125,
+    "rental cost": 500,
+    "lodging cost": 600,
+    "flight cost": 124,
+    "food cost": 70,
+    "total cost": 1466.18125,
+    "cost per person": 733.090625,
+    "cost per day": 293.23625000000004,
+    "cost per day per person": 146.61812500000002
+  },
+  {
+    "number of people": 2,
+    "number of days": 6,
+    "gas cost": 172.18125,
+    "rental cost": 600,
+    "lodging cost": 750,
+    "flight cost": 124,
+    "food cost": 84,
+    "total cost": 1730.18125,
+    "cost per person": 865.090625,
+    "cost per day": 288.36354166666666,
+    "cost per day per person": 144.18177083333333
+  },
+  {
+    "number of people": 3,
+    "number of days": 5,
+    "gas cost": 172.18125,
+    "rental cost": 500,
+    "lodging cost": 600,
+    "flight cost": 124,
+    "food cost": 105,
+    "total cost": 1501.18125,
+    "cost per person": 500.39375,
+    "cost per day": 300.23625000000004,
+    "cost per day per person": 100.07875000000001
+  },
+  {
+    "number of people": 3,
+    "number of days": 6,
+    "gas cost": 172.18125,
+    "rental cost": 600,
+    "lodging cost": 750,
+    "flight cost": 124,
+    "food cost": 126,
+    "total cost": 1772.18125,
+    "cost per person": 590.7270833333333,
+    "cost per day": 295.36354166666666,
+    "cost per day per person": 98.45451388888888
+  }
+]
+```
+
+## Example CLI Output
 ```bash
    number of people  number of days  gas cost  rental cost  lodging cost  flight cost  food cost  total cost  cost per person  cost per day  cost per day per person
 6                 3               7     153.0          700           750          124        147      1874.0            625.0         268.0                     89.0
