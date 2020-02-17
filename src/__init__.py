@@ -1,11 +1,11 @@
-from src.simulate import simulate
-from src.vehicle import Vehicle
-from src.visualizer import visualize
+from src.model.simulate import simulate
+from src.model.vehicle import Vehicle
+from src.model.visualizer import visualize
 
 vehicles = [
-    Vehicle("Rental Van", 7, 100, 20),
+    Vehicle("Rental Van", 7, 101, 20),
     Vehicle("Efficient Sedan", 5, 100, 40)
-] * 20
+] * 3
 
 miles_to_boston = 3061
 average_cost_per_gallon_of_gas = 2

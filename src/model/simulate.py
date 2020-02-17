@@ -1,4 +1,4 @@
-from src import driving_simulator, lodging_simulator
+from src.model import lodging_simulator, driving_simulator
 
 
 def simulate(vehicles, distance, average_cost_per_gallon_of_gas, average_cost_of_hotel_room_per_night, max_people_per_room, people_range, day_range, ticket_cost, average_cost_of_food_per_day_per_person):
