@@ -1,18 +1,3 @@
-from src.model import lodging_simulator, driving_simulator
-
-
-def simulate(vehicles, distance, average_cost_per_gallon_of_gas, average_cost_of_hotel_room_per_night, max_people_per_room, people_range, day_range, ticket_cost, average_cost_of_food_per_day_per_person):
-    results = []
-    for number_of_people in people_range:
-        for number_of_days in day_range:
-            driving_cost = driving_simulator.simulate(vehicles, distance, number_of_people, number_of_days, average_cost_per_gallon_of_gas)
-            lodging_cost = lodging_simulator.simulate(number_of_people, number_of_days, average_cost_of_hotel_room_per_night, max_people_per_room)
-            flight_cost = ticket_cost
-            food_cost = average_cost_of_food_per_day_per_person * number_of_days * number_of_people
-            results.append(SimulationResult(number_of_people, number_of_days, driving_cost, lodging_cost, flight_cost, food_cost))
-    return results
-
-
 class SimulationResult:
     def __init__(self, number_of_people, number_of_days, driving_cost, lodging_cost, flight_cost, food_cost):
         self.number_of_people = number_of_people
@@ -21,6 +6,7 @@ class SimulationResult:
         self.lodging_cost = lodging_cost
         self.flight_cost = flight_cost
         self.food_cost = food_cost
+
 
     def to_dict(self):
         driving_cost_gas = self.driving_cost[1][1]
@@ -42,4 +28,3 @@ class SimulationResult:
             "cost per day": cost_per_day,
             "cost per day per person": cost_per_day_per_person
         }
-

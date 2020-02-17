@@ -1,3 +1,5 @@
+.aws-sam/
 .idea/
-__pycache__/
 *.iml
+out/
+
