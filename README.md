@@ -5,14 +5,17 @@ A little program to help calculate the cost of a road trip. Intended for a road 
 * Simulates the price for a road trip for a range of passengers and duration so that cost can be compared.
 * Chooses the most cost-efficient rental vehicles from a given options
 * Calculates number of cars needed and number of lodging rooms needed based on passengers
-* Provides output in an easy-to-understand format through pandas
+* Provides CLI output in an easy-to-understand format through pandas
 * Includes an AWS Lambda handler for a simple JSON API
-* Easy to deploy to AWS Lambda with SAM
+* Easy to deploy to [AWS Lambda](https://aws.amazon.com/lambda/) with [SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
 
 ## Usage
 There is no user interface, so the source must be edited directly. The relevant file is ```__init__.py```. Everything else should (probably) be untouched.
 
-Alternatively you can deploy this to AWS Lambda and make requests against it.
+Alternatively you can deploy this to AWS Lambda and make requests against it. The easiest way to deploy this is with [SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html). After setting SAM up, run the following commands:
+```bash
+sam validate; sam build; sam package; sam deploy
+```
 
 ### Example Lambda Request
 ```bash
