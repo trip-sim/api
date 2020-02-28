@@ -9,6 +9,9 @@ A little program to help calculate the cost of a road trip. Intended for a road 
 * Includes an AWS Lambda handler for a simple JSON API
 * Easy to deploy to [AWS Lambda](https://aws.amazon.com/lambda/) with [SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html)
 
+## View Live
+Interactive tool for REST requests: https://reqbin.com/f6dck49c
+
 ## Usage
 There is no user interface, so the source must be edited directly. The relevant file is ```__init__.py```. Everything else should (probably) be untouched.
 
